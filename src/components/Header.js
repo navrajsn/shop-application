@@ -1,7 +1,10 @@
 import React from 'react'
-import { Container, Form, Navbar, Dropdown, Nav } from 'react-bootstrap'
+import { Container, Form, Navbar } from 'react-bootstrap'
+import Filter from './Filter'
+import { ShopContext } from './context/Context'
 
 const Header = () => {
+  const { productDispatch } = ShopContext()
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -16,28 +19,17 @@ const Header = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) =>
+                productDispatch({
+                  type: 'Filter_By_Search',
+                  payload: e.target.value,
+                })
+              }
             />
           </Form>
-          <Nav className="me-auto my-2 my-lg-0">
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-button-dark-example1"
-                variant="secondary"
-              >
-                Filter
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu variant="dark" style={{ minWidth: 100 }}>
-                <Dropdown.Item href="#/filter-1" active>
-                  1
-                </Dropdown.Item>
-                <Dropdown.Item href="#/filter-2"> 2 </Dropdown.Item>
-                <Dropdown.Item href="#/filter-3"> 3 </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Nav>
         </Navbar.Collapse>
       </Container>
+      <Filter />
     </Navbar>
   )
 }

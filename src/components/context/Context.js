@@ -1,6 +1,13 @@
 import React from 'react'
-import { createContext, useEffect, useState, useContext } from 'react'
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useReducer,
+} from 'react'
 import axios from 'axios'
+import { productReducer } from './ProductReducer'
 
 const Shop = createContext()
 
@@ -10,13 +17,21 @@ const Context = ({ children }) => {
     axios
       .get('data.json')
       .then((res) => {
-        console.log(res.data)
         setProducts(res.data)
       })
       .catch((err) => console.log(err))
   }, [])
 
-  return <Shop.Provider value={{ products }}>{children}</Shop.Provider>
+  const [productState, productDispatch] = useReducer(productReducer, {
+    type: 'All',
+    searchQuery: '',
+  })
+
+  return (
+    <Shop.Provider value={{ products, productState, productDispatch }}>
+      {children}
+    </Shop.Provider>
+  )
 }
 
 export default Context
