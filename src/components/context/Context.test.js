@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Context from './Context'
 import Home from '../Home'
 import ProductCard from '../ProductCard'
