@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="home">
+      <div data-testid="home" className="home">
         {products ? (
           <div className="productContainer">
             {updatedView().map((product) => {

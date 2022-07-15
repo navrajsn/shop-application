@@ -3,13 +3,10 @@ import { Nav, Dropdown } from 'react-bootstrap'
 import { ShopContext } from './context/Context'
 
 const Filter = () => {
-  const {
-    productState: { type, searchQuery },
-    productDispatch,
-  } = ShopContext()
+  const { productDispatch } = ShopContext()
   return (
     <Nav className="me-auto my-2 my-lg-0">
-      <Dropdown>
+      <Dropdown data-testid="filter">
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
           Filter
         </Dropdown.Toggle>
@@ -18,7 +15,6 @@ const Filter = () => {
           <Dropdown.Item
             as="button"
             onClick={() => productDispatch({ type: 'Clear' })}
-            active
           >
             All
           </Dropdown.Item>
