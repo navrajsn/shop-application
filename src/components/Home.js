@@ -14,7 +14,7 @@ const Home = () => {
     let filteredProducts = products
     if (searchQuery) {
       filteredProducts = filteredProducts.filter((prod) =>
-        prod.productName.toLowerCase().includes(searchQuery),
+        prod.productName.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     }
     if (type !== 'All') {
