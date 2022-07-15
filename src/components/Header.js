@@ -6,9 +6,9 @@ import { ShopContext } from './context/Context'
 const Header = () => {
   const { productDispatch } = ShopContext()
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" sticky="top">
       <Navbar.Brand>
-        <a>Shop</a>
+        <a>Shop </a>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
