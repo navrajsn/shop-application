@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import Context from './Context'
 import Home from '../Home'
 import ProductCard from '../ProductCard'
@@ -34,7 +34,11 @@ describe('Context component', () => {
       </Context>,
     )
     const userList = screen.getByTestId('home')
-    expect(userList).toBeInTheDocument()
+    await waitFor(() => {
+      expect(userList).toBeInTheDocument()
+    })
+
+    expect(userList.children).toHaveLength(1)
 
     render(
       <Context>
@@ -49,9 +53,13 @@ describe('Context component', () => {
 
     render(<ProductCard product={mockData} />)
     const element = screen.getByTestId('products')
-    expect(element).toBeInTheDocument()
+    await waitFor(() => {
+      expect(element).toBeInTheDocument()
+    })
 
     const productName = screen.getByTestId('productName')
-    expect(productName).toBeInTheDocument()
+    await waitFor(() => {
+      expect(productName).toBeInTheDocument()
+    })
   })
 })
