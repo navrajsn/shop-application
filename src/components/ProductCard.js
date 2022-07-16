@@ -6,8 +6,12 @@ const ProductCard = ({ product }) => {
 
   return (
     <div data-testid="products" className="products">
-      <Card border={border}>
-        <Card.Img variant="top" src="Product_1.jpeg" />
+      <Card border={border} className="card">
+        <Card.Img
+          variant="top"
+          className="image"
+          src={product.productImage ? product.productImage : 'Product_1.jpeg'}
+        />
         <Card.Body>
           <Card.Title data-testid="productName">
             {product.productName}

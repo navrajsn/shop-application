@@ -11,3 +11,16 @@
 .products {
   margin: 10px;
 }
+
+.card {
+  width: 300px;
+  height: 350px;
+  justify-content: center;
+}
+
+.image {
+  max-width: 80%;
+  height: 65%;
+  padding-left: 15%;
+  padding-top: 5%;
+}
